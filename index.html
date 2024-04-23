@@ -1,25 +1,35 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <!-- Link Vue.js -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!--/Link Vue.js -->
 
+    <!-- Link Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <!--/Link Fonts -->
+
+    <!-- Link Custom Style -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/tablet.css" media="screen and (max-width: 991px)">
-    <link rel="stylesheet" href="./css/mobile.css" media="screen and (max-width: 540px)">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/tablet.css" media="screen and (max-width: 991px)">
+    <link rel="stylesheet" href="assets/css/mobile.css" media="screen and (max-width: 540px)">
+    <!--/Link Custom Style -->
+
     <title>Boolzapp</title>
 </head>
+
 <body>
     <div id="app" class="container">
         <!-- contenitore sx -->
         <div class="left">
             <div class="header-left">
                 <div class="header-left-logo">
-                    <img src="img/avatar_io.jpg" alt="Mio avatar">
+                    <img src="assets/img/avatar_io.jpg" alt="Mio avatar">
                 </div>
                 <div class="header-left-icons">
                     <i class="fas fa-circle-notch"></i>
@@ -44,47 +54,57 @@
                     name="search">
             </div>
            
-            <!-- Contatti Avatar Ciclo For In -->
+            <!-- Cont Contatti Left  -->
             <div class="contacts">
-                <div v-for="(curContact, i) in contacts" class="contact">
+                
+                <div class="contact" 
+                v-for="(curContact, index) in contacts"
+                @click="chooseAvatar(index)"
+                >
                     <div class="contact-logo">
-                        <img :src="curContact.avatar" alt="curContact.avatar">
+                        <img 
+                        :src="`assets/img/avatar${curContact.avatar}.jpg`" alt="`Avatar ${curContact.name}`">
                     </div>
                     <div class="contact-info">
                         <h3>
-                            <span class="contact-name">{{ contacts[i].name }}</span>
+                            <span class="contact-name">{{curContact.name}}</span>
                             <span class="time">16:15</span>
                         </h3>
-                        <small>                           
-                        </small>
+                        <small>Lorem ipsum dolor sit amet</small>
                     </div>
-                </div>
-                <!-- /Contatti Avatar Ciclo For In -->
-               
+                </div>    
+            
             </div>
+            <!--/Cont Contatti Left  -->
+        
         </div>
         <!-- /contenitore sx -->
+        
         <!-- contenitore dx -->
         <div class="right">
             <div class="header-right">
                 <div class="header-right-logo">
-                    <img src="img/avatar_1.jpg" alt="">
-                    <h3><span id="header-right-contact-name">Michele</span> <br>
+                    <img :src="`assets/img/avatar${contacts[activeIndex].avatar}.jpg`" alt="">
+                    <h3><span id="header-right-contact-name">{{contacts[activeIndex].name}}</span> <br>
                         <small class="time">Ultimo accesso oggi alle 16:26</small>
                     </h3>
                 </div>
+                
+                <!-- Icone Header Chat -->
                 <div class="header-right-icons">
                     <i class="fas fa-search"></i>
                     <i class="fas fa-paperclip"></i>
                     <i class="fas fa-ellipsis-v"></i>
                 </div>
+                <!--/Icone Header Chat -->
+                
             </div>
             <div class="right-messages-container">
                 <div class="right-messages">
                     <div class="message sent">
                         <div class="message-inner">
                             <span class="message-text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat eos blanditiis architecto expedita aspernatur quasi, et nobis aut officiis soluta voluptates nesciunt voluptate ipsa fuga rerum doloribus, unde laboriosam doloremque?
+                           
                             </span>
                             <div class="message-options">
                                 <i class="fa fa-chevron-down"></i>
@@ -99,9 +119,7 @@
                     <div class="message received">
                         <div class="message-inner">
                             <span class="message-text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat eos blanditiis architecto expedita
-                                aspernatur quasi, et nobis aut officiis soluta voluptates nesciunt voluptate ipsa fuga rerum doloribus, unde
-                                laboriosam doloremque?
+                      
                             </span>
                             <div class="message-options">
                                 <i class="fa fa-chevron-down"></i>
@@ -127,6 +145,8 @@
         </div>
         <!-- /contenitore dx -->
     </div>
-<script src="data.js"></script>
+   
+    <script src="./assets/js/data.js"></script>
 </body>
+
 </html>
