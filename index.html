@@ -53,17 +53,13 @@
                 <input id="contacts-filter" class="left-searchbar-input" placeholder="Cerca o inizia una nuova chat"
                     name="search">
             </div>
-           
+
             <!-- Cont Contatti Left  -->
             <div class="contacts">
-                
-                <div class="contact" 
-                v-for="(curContact, index) in contacts"
-                @click="chooseAvatar(index)"
-                >
+
+                <div class="contact" v-for="(curContact, index) in contacts" @click="chooseAvatar(index)">
                     <div class="contact-logo">
-                        <img 
-                        :src="`assets/img/avatar${curContact.avatar}.jpg`" alt="`Avatar ${curContact.name}`">
+                        <img :src="`assets/img/avatar${curContact.avatar}.jpg`" alt="`Avatar ${curContact.name}`">
                     </div>
                     <div class="contact-info">
                         <h3>
@@ -72,24 +68,27 @@
                         </h3>
                         <small>Lorem ipsum dolor sit amet</small>
                     </div>
-                </div>    
-            
+                </div>
+
             </div>
             <!--/Cont Contatti Left  -->
-        
+
         </div>
         <!-- /contenitore sx -->
-        
+
         <!-- contenitore dx -->
         <div class="right">
             <div class="header-right">
                 <div class="header-right-logo">
-                    <img :src="`assets/img/avatar${contacts[activeIndex].avatar}.jpg`" alt="">
-                    <h3><span id="header-right-contact-name">{{contacts[activeIndex].name}}</span> <br>
+                    <img :src="`assets/img/avatar${contacts[activeIndex].avatar}.jpg`"
+                        alt="`contacts[activeIndex].name`">
+                    <h3>
+                        <span id="header-right-contact-name">{{contacts[activeIndex].name}}
+                        </span> <br>
                         <small class="time">Ultimo accesso oggi alle 16:26</small>
                     </h3>
                 </div>
-                
+
                 <!-- Icone Header Chat -->
                 <div class="header-right-icons">
                     <i class="fas fa-search"></i>
@@ -97,14 +96,16 @@
                     <i class="fas fa-ellipsis-v"></i>
                 </div>
                 <!--/Icone Header Chat -->
-                
+
             </div>
             <div class="right-messages-container">
                 <div class="right-messages">
-                    <div class="message sent">
+                    <div class="message" 
+                    :class="curMessage.status"
+                    v-for="curMessage in contacts[activeIndex].messages">
                         <div class="message-inner">
                             <span class="message-text">
-                           
+                              {{ curMessage.message }}  
                             </span>
                             <div class="message-options">
                                 <i class="fa fa-chevron-down"></i>
@@ -114,23 +115,9 @@
                                 </div>
                             </div>
                         </div>
-                        <span class="message-time">16:13</span>
+                        <span class="message-time">{{ curMessage.date }}</span>
                     </div>
-                    <div class="message received">
-                        <div class="message-inner">
-                            <span class="message-text">
-                      
-                            </span>
-                            <div class="message-options">
-                                <i class="fa fa-chevron-down"></i>
-                                <div class="message-options-panel">
-                                    <div class="message-info">Info messaggio</div>
-                                    <div class="message-destroy">Cancella messaggio</div>
-                                </div>
-                            </div>
-                        </div>
-                        <span class="message-time">16:15</span>
-                    </div>
+                    
                 </div>
             </div>
             <div class="right-footer">
@@ -145,7 +132,7 @@
         </div>
         <!-- /contenitore dx -->
     </div>
-   
+
     <script src="./assets/js/data.js"></script>
 </body>
 
