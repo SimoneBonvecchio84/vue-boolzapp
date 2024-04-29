@@ -1,3 +1,5 @@
+const dt = luxon.DateTime;
+
 const { createApp } = Vue;
 
 createApp ({
@@ -174,15 +176,48 @@ createApp ({
             ],
             
             activeIndex: 0,
-        
+
+            messageText : ""
+            
+            
         }
     
+    },
+    computed : {
+        activeConctact: function () {
+            return this.contacts[this.activeIndex];
+        }
     },
     methods: {
       chooseAvatar: function (curIndex) {
         this.activeIndex = curIndex
-      }, 
+      },
+      sendNewMessage: function () {
+        if(this.messageText !== "") {
+            const nowDate = dt.now().setLocale("it").toLocaleString(dt.DATETIME_SHORT_WITH_SECONDS);
+            const newMessage  = {
+                date: nowDate,
+                message: this.messageText,
+                status: "sent",
+            }
+            this.messageText = "";
+            this.activeConctact.messages.push(newMessage)
+           setTimeout(()=>{
+               this.recieveMessage()
+
+           }, 1000);
+        } 
+      },
+      recieveMessage: function () {
+        const nowDate = dt.now().setLocale("it").toLocaleString(dt.DATETIME_SHORT_WITH_SECONDS);
+        const newMessage  = {
+            date: nowDate,
+            message: "ok",
+            status: 'received'
+        }
+        this.activeConctact.messages.push(newMessage)
+      }
     }
 
-}).mount("#app")
+}).mount("#app")  
 

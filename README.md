@@ -21,7 +21,9 @@
      Messages e una chiave array nella
      quale sono presenti tre oggetti ognuno dei quali ha tre chiavi:
      date, message e status(classe CSS).
- 
+
+--- 
+
 ## Inserimento dinamico dei dati in Pagina
 
   - Analizzando l html fornitomi vado ad    eliminare le ridondanze.
@@ -48,6 +50,8 @@
   Pure in alt tramite classe dinamica e all tag small tramite interpolazione applichiamo lo stesso principo: 
   contacts[activeIndex].name
 
+---
+
 ###  Evento Click
 
   Nei methods del nostro data.js creiamo una funzione che ci permette al click di selezionare una chat scorrendo tra i nostri contatti e di visualizzarla nella parte destra dell'applicazione.
@@ -57,6 +61,8 @@
   Richiamo la variabile activeIndex con la parolachiave this = a curIndex.
   Cosi facendo al click su un contatto questo sarà
   Visualizzato nella parte destra in alto della chat.
+
+---
 
 ### Messaggi dinamici
 
@@ -77,7 +83,14 @@
  Al click di un avatar sulla parte destra avremo:
  In cima il nome dell avatar e nella parte centrale i messaggi che ha ricevuto e le risposte. 
 
+---
 
+ - MILESTONE 3
 
+   Aggiunta di messaggio: L'utente scrive un testo nella parte bassa e digitando "enter" il testo viene aggiunto al thread sopra, come messaggio verde.
+
+   Risposta dall'interolcutore: ad ogni inserimento di un messaggio, l'utente riceverà
+   un ok come risposta, che apparirà dopo un secondo 
+    
 
     

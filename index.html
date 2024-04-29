@@ -80,10 +80,10 @@
         <div class="right">
             <div class="header-right">
                 <div class="header-right-logo">
-                    <img :src="`assets/img/avatar${contacts[activeIndex].avatar}.jpg`"
+                    <img :src="`assets/img/avatar${activeConctact.avatar}.jpg`"
                         :alt="`contacts[activeIndex].name`">
                     <h3>
-                        <span id="header-right-contact-name">{{contacts[activeIndex].name}}
+                        <span id="header-right-contact-name">{{activeConctact.name}}
                         </span> <br>
                         <small class="time">Ultimo accesso oggi alle 16:26</small>
                     </h3>
@@ -102,11 +102,13 @@
                 <div class="right-messages">
                     <div class="message" 
                     :class="curMessage.status"
-                    v-for="curMessage in contacts[activeIndex].messages">
+                    v-for="curMessage in activeConctact.messages">
                         <div class="message-inner">
+                            
                             <span class="message-text">
-                              {{ curMessage.message }}  
+                              {{ curMessage.message }}
                             </span>
+                           
                             <div class="message-options">
                                 <i class="fa fa-chevron-down"></i>
                                 <div class="message-options-panel">
@@ -124,7 +126,10 @@
                 <div class="right-footer-icon">
                     <i class="far fa-smile"></i>
                 </div>
-                <input class="new-message-inputs" placeholder="Scrivi un messaggio">
+                <input
+                v-model.trim="messageText" 
+                @keyup.enter="sendNewMessage()"
+                class="new-message-inputs" placeholder="Scrivi un messaggio">
                 <div class="right-footer-icon">
                     <i class="fa fa-microphone" aria-hidden="true"></i>
                 </div>
@@ -132,8 +137,14 @@
         </div>
         <!-- /contenitore dx -->
     </div>
-
+    
+    <!-- Luxon -->
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
+    <!--/Luxon -->
+    
+    <!-- Custom Script -->
     <script src="./assets/js/data.js"></script>
+    <!--/Custom Script -->
 </body>
 
 </html>
